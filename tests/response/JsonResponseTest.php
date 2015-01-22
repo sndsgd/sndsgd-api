@@ -5,7 +5,7 @@ namespace sndsgd\api\response;
 use \sndsgd\Json;
 
 
-class JsonResponseTest extends \PHPUnit_Framework_TestCase
+class JsonResponseTest extends \sndsgd\api\ResponseTestCase
 {
    protected $responseData = [
       'integer' => 42,
@@ -40,13 +40,14 @@ class JsonResponseTest extends \PHPUnit_Framework_TestCase
    {
       $this->res->setData($this->responseData);
       $this->res->send();
-      $headers = xdebug_get_headers();
-      $this->assertEquals('HTTP 1.1 200 OK', $headers[0]);
-      $this->assertEquals('Content-Type: application/json', $headers[1]);
 
       $expect = json_encode($this->responseData);
       $this->expectOutputString($expect);
       
+      $this->getAndTestHeaders([
+         'HTTP 1.1 200 OK',
+         'Content-Type: application/json'
+      ]);
    }
 }
 

@@ -3,7 +3,7 @@
 namespace sndsgd\api;
 
 
-class ResponseTest extends \PHPUnit_Framework_TestCase
+class ResponseTest extends \sndsgd\api\ResponseTestCase
 {
    public function setUp()
    {
@@ -44,10 +44,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
       $this->res->addHeader('x-two', 'two');
 
       $this->res->send();
-      $headers = xdebug_get_headers();
-      $this->assertEquals('HTTP 1.1 200 OK', $headers[0]);
-      $this->assertEquals('x-one: 1', $headers[1]);
-      $this->assertEquals('x-two: two', $headers[2]);
+      $this->getAndTestHeaders(['HTTP 1.1 200 OK', 'x-one: 1', 'x-two: two']);
    }
 
    /**
@@ -63,11 +60,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
 
       Response::sendBatch('sndsgd\\api\\Response', $responses);
 
-      $headers = xdebug_get_headers();
-      $this->assertEquals('HTTP 1.1 200 OK', $headers[0]);
-      $this->assertEquals('X-Response-Count: 3', $headers[1]);
-
-
+      $this->getAndTestHeaders(['HTTP 1.1 200 OK', 'X-Response-Count: 3']);
    }
 }
 
