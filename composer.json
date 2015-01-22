@@ -17,7 +17,7 @@
    "require": {
       "php": ">=5.4.0",
       "sndsgd/util": "~0.5",
-      "sndsgd/http": "dev-master"
+      "sndsgd/http": "~0.5"
    },
    "require-dev": {
       "phpunit/phpunit": "~4.0"

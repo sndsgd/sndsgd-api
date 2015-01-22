@@ -17,7 +17,8 @@ class JsonResponseTest extends \sndsgd\api\ResponseTestCase
    public function setUp()
    {
       $_SERVER['SERVER_PROTOCOL'] = 'HTTP 1.1';
-      $this->res = new JsonResponse(200);
+      $this->res = new JsonResponse;
+      $this->res->setStatusCode(200);
    }
 
    /**
@@ -46,7 +47,8 @@ class JsonResponseTest extends \sndsgd\api\ResponseTestCase
       
       $this->getAndTestHeaders([
          'HTTP 1.1 200 OK',
-         'Content-Type: application/json'
+         'Content-Type: application/json',
+         'Content-Length: '.strlen($expect)
       ]);
    }
 }

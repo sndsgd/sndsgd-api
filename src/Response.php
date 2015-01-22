@@ -39,14 +39,14 @@ class Response
     * 
     * @var integer
     */
-   protected $statusCode;
+   protected $statusCode = 200;
 
    /** 
     * The response status text
     * 
     * @var string
     */
-   protected $statusText;
+   protected $statusText = 'OK';
 
    /** 
     * Custom response headers are stored here
@@ -56,17 +56,39 @@ class Response
    protected $headers = [];
 
    /**
-    * Create a new response
+    * Set the status code
     * 
     * @param integer $code An http status code
+    * @return sndsgd\api\Response
     */
-   public function __construct($code)
+   public function setStatusCode($code)
    {
       $this->statusCode = $code;
       $this->statusText = HttpCode::getStatusText($code);
       if ($this->statusText === null) {
-         throw new InvalidArgumentException("invalid HTTP code '$code'");
+         throw new InvalidArgumentException("invalid HTTP status code '$code'");
       }
+      return $this;
+   }
+
+   /**
+    * Get the http status code
+    * 
+    * @return integer
+    */
+   public function getStatusCode()
+   {
+      return $this->statusCode;
+   }
+
+   /**
+    * Get the http status text
+    * 
+    * @return string
+    */
+   public function getStatusText()
+   {
+      return $this->statusText;
    }
 
    /**
@@ -90,26 +112,6 @@ class Response
    public function getHeaders()
    {
       return $this->headers;
-   }
-
-   /**
-    * Get the http status code
-    * 
-    * @return integer
-    */
-   public function getStatusCode()
-   {
-      return $this->statusCode;
-   }
-
-   /**
-    * Get the http status text
-    * 
-    * @return string
-    */
-   public function getStatusText()
-   {
-      return $this->statusText;
    }
 
    /**

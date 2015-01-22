@@ -8,15 +8,16 @@ class ResponseTest extends \sndsgd\api\ResponseTestCase
    public function setUp()
    {
       $_SERVER['SERVER_PROTOCOL'] = 'HTTP 1.1';
-      $this->res = new Response(200);
+      $this->res = new Response;
+      $this->res->setStatusCode(200);
    }
 
    /**
     * @expectedException InvalidArgumentException
     */
-   public function testConstructorInvalidStatusCode()
+   public function testSetStatusCodeInvalidCode()
    {
-      new Response('nope');
+      $this->res->setStatusCode('asd');
    }
 
    public function testHeaders()
