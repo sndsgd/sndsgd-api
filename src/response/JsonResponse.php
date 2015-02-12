@@ -33,12 +33,12 @@ class JsonResponse extends \sndsgd\api\Response
    public function send()
    {
       parent::send();
-      header('Content-Type: application/json');
+      header("Content-Type: application/json");
       $payload = $this->getData();
       $payload = (empty($payload))
-         ? '{}'
+         ? "{}"
          : json_encode($payload, $this->encodeOptions);
-      header('Content-Length: '.strlen($payload));
+      header("Content-Length: ".strlen($payload));
       echo $payload;
    }
 }

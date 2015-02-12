@@ -8,15 +8,15 @@ use \sndsgd\Json;
 class JsonResponseTest extends \sndsgd\api\ResponseTestCase
 {
    protected $responseData = [
-      'integer' => 42,
-      'float' => 4.2,
-      'string' => 'two',
-      'slashes' => "/escape/me"
+      "integer" => 42,
+      "float" => 4.2,
+      "string" => "two",
+      "slashes" => "/escape/me"
    ];
 
    public function setUp()
    {
-      $_SERVER['SERVER_PROTOCOL'] = 'HTTP 1.1';
+      $_SERVER["SERVER_PROTOCOL"] = "HTTP 1.1";
       $this->res = new JsonResponse;
       $this->res->setStatusCode(200);
    }
@@ -46,9 +46,9 @@ class JsonResponseTest extends \sndsgd\api\ResponseTestCase
       $this->expectOutputString($expect);
       
       $this->getAndTestHeaders([
-         'HTTP 1.1 200 OK',
-         'Content-Type: application/json',
-         'Content-Length: '.strlen($expect)
+         "HTTP 1.1 200 OK",
+         "Content-Type: application/json",
+         "Content-Length: ".strlen($expect)
       ]);
    }
 }

@@ -29,7 +29,7 @@ class Response
       }
 
       $response = new $class(200);
-      $response->addHeader('X-Response-Count', count($data));
+      $response->addHeader("X-Response-Count", count($data));
       $response->setData($data);
       $response->send();
    }
@@ -46,7 +46,7 @@ class Response
     * 
     * @var string
     */
-   protected $statusText = 'OK';
+   protected $statusText = "OK";
 
    /** 
     * Custom response headers are stored here
@@ -122,12 +122,12 @@ class Response
    public function send()
    {
       header(
-         $_SERVER['SERVER_PROTOCOL'].' '. // HTTP 1.1
-         $this->statusCode.' '. // 200
+         $_SERVER["SERVER_PROTOCOL"]." ". // HTTP 1.1
+         $this->statusCode." ". // 200
          $this->statusText // OK
       );
       foreach ($this->headers as $key => $value) {
-         header($key.': '.$value);
+         header("$key: $value");
       }
    }
 }
