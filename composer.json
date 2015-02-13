@@ -1,6 +1,6 @@
 {
    "name": "sndsgd/api",
-   "description": "A collection of tools for creating a simple API",
+   "description": "A simple API toolkit for PHP",
    "type": "library",
    "homepage": "https://github.com/sndsgd-api",
    "license": "MIT",
