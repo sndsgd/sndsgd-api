@@ -19,7 +19,7 @@ class ResponseTestCase extends \PHPUnit_Framework_TestCase
             $realHeader = strtolower($headers[$i]);
 
             // the content type header can include the charset (;charset=UTF-8)
-            if (Str::startsWith($expectHeader, "content-type:")) {
+            if (Str::beginsWith($expectHeader, "content-type:")) {
                $realHeader = substr($realHeader, 0, strlen($expectHeader));
                $this->assertEquals($expectHeader, $realHeader);
             }
