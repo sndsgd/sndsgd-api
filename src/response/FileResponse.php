@@ -13,15 +13,17 @@ use \sndsgd\Mime;
 class FileResponse extends \sndsgd\api\Response
 {
    /**
-    * [$path description]
-    * @var [type]
+    * Absolute path to the file
+    * 
+    * @var string
     */
    protected $path;
 
    /**
-    * [setPath description]
-    * @param [type] $path     [description]
-    * @param [type] $contentType [description]
+    * Set the path to the file
+    * 
+    * @param string $path
+    * @param string|null $contentType
     */
    public function setPath($path, $contentType = null)
    {
