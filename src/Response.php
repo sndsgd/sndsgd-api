@@ -14,7 +14,7 @@ class Response
     * Send multiple responses as one array of responses
     *
     * @param string $class The classname of the response instance to send
-    * @param array.<sndsgd\api\Response> $responses
+    * @param array<sndsgd\api\Response> $responses
     */
    public static function sendBatch($class, array $responses)
    {
@@ -51,7 +51,7 @@ class Response
    /** 
     * Custom response headers are stored here
     * 
-    * @var array.<string,string|number>
+    * @var array<string,string|number>
     */
    protected $headers = [];
 
@@ -107,7 +107,7 @@ class Response
    /**
     * Get headers
     * 
-    * @return array.<string,string|number>
+    * @return array<string,string|number>
     */
    public function getHeaders()
    {
