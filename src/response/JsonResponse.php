@@ -33,7 +33,7 @@ class JsonResponse extends \sndsgd\api\Response
    public function send()
    {
       parent::send();
-      header("Content-Type: application/json");
+      header("Content-Type: application/json; charset=UTF-8");
       $payload = $this->getData();
       $payload = (empty($payload))
          ? "{}"
