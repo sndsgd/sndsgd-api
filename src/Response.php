@@ -8,7 +8,7 @@ use \sndsgd\http\Code as HttpCode;
 
 class Response
 {
-   use \sndsgd\data\Manager;
+   use \sndsgd\DataTrait;
    
    /**
     * Send multiple responses as one array of responses
